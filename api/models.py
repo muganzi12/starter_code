@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 #You are extending Django’s built-in user.
 class User(AbstractUser):
-    pass 
+    pass #do nothing for now.
 
 class  Product(models.Model):
     name= models.CharField(max_length=200)
