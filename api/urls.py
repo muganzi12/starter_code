@@ -12,7 +12,14 @@ def home(request):
 
 urlpatterns = [
      path('',home),
+     #Get All Products
      path('products/', views.product_list),
-       path('products/<int:pk>/', views.product_detail),
-    #  path("", include(router.urls)),
+     #Get Details of One Product
+     path('products/<int:pk>/', views.product_detail),
+     #path("", include(router.urls)),
+
+     #Get All Orders
+     path('orders/', views.order_list),
+     #Get Details of One Order
+     path('orders/<uuid:pk>/', views.order_detail, name='order_detail'),
 ]
