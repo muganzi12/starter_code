@@ -9,14 +9,15 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     pass #do nothing for now.
 
+#Every Django model must inherit from models.Model
 class  Product(models.Model):
     name= models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=10,decimal_places=2)
     stock = models.PositiveBigIntegerField()
-    image= models.ImageField(upload_to='products/',blank=True,null=True)
+    image= models.ImageField(upload_to='products/',blank=True,null=True) #uploaded files go into the products/ folder inside your media directory
 
-    @property
+    @property #it makes a method behave like a normal field.
     def in_stock(self):
         return self.stock > 0
     
