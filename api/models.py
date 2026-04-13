@@ -8,6 +8,8 @@ from django.contrib.auth.models import AbstractUser
 #You are extending Django’s built-in user.
 class User(AbstractUser):
     pass #do nothing for now.
+    class Meta:
+          db_table = "api_user"
 
 #Every Django model must inherit from models.Model
 class  Product(models.Model):
@@ -23,11 +25,13 @@ class  Product(models.Model):
     
     def __str__(self):
         return self.name
+    class Meta:
+          db_table = "api_product"
     
 class Order(models.Model):
         class StatusChoices(models.TextChoices):
             PENDING= 'Pending'
-            CONFIRMED= 'Confrimed'
+            CONFIRMED= 'Confirmed'
             CANCELLED= 'Cancelled'
 
         id = models.UUIDField(primary_key =True, default=uuid.uuid4)
@@ -38,6 +42,8 @@ class Order(models.Model):
 
         def __str__(self):
             return f"Order {self.id} by {self.user.username}"
+        class Meta:
+          db_table = "api_order"
 
 class OrderItem(models.Model):
      order= models.ForeignKey(
@@ -54,3 +60,5 @@ class OrderItem(models.Model):
      
      def __str__(self):
           return f"{self.quantity} x {self.product.name} in Order {self.order.id}"
+     class Meta:
+          db_table = "api_orderitem"
