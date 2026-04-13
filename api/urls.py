@@ -14,6 +14,8 @@ urlpatterns = [
      path('',home),
      #Get All Products
      path('products/', views.product_list),
+
+    path('products/info/', views.product_info),
      #Get Details of One Product
      path('products/<int:pk>/', views.product_detail),
      #path("", include(router.urls)),

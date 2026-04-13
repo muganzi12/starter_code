@@ -65,4 +65,13 @@ class OrderSerializer(serializers.ModelSerializer):
                'status',
                'items',
                'total_price'
-             )     
+             )
+        
+class ProductInfoSerializer(serializers.Serializer):
+      products= ProductSerializer(many=True)
+      count= serializers.IntegerField()
+      max_price= serializers.FloatField()
+
+class OrderInfoSerializer(serializers.Serializer):
+      orders= OrderSerializer(many=True)
+      count= serializers.IntegerField()
