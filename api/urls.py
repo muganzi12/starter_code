@@ -13,15 +13,16 @@ def home(request):
 urlpatterns = [
      path('',home),
      #Get All Products
-     path('products/', views.product_list),
+     path('products/', views.ProductListAPIView.as_view()),
+    #  path('products/', views.product_list),
 
-    path('products/info/', views.product_info),
+    # path('products/info/', views.product_info),
      #Get Details of One Product
-     path('products/<int:pk>/', views.product_detail),
+     path('products/<int:product_id>/', views.ProductDetailAPIView.as_view()),
      #path("", include(router.urls)),
 
      #Get All Orders
-     path('orders/', views.order_list),
+     path('orders/', views.OrderListAPIView.as_view()),
      #Get Details of One Order
-     path('orders/<uuid:pk>/', views.order_detail, name='order_detail'),
+     path('orders/<uuid:order_id>/', views.OrderDetailAPIView.as_view(), name='order_detail'),
 ]
